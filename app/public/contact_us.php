@@ -1,10 +1,10 @@
-<h1> Merci <?php echo ($_POST['nom']) ?></h1>
-<p> Notre équipe vous recontactera sous peu à l'adresse <?php echo ($_POST['mail']) ?> </p>
+<!--#if expr"%{QUERY_STRING} ~= /lang=en/"-->
+    <!--#include virtual="en.html"-->
+<!--#endif-->
 <?php
-if (isset($_POST['form']))
-{
-    $nom = ($_POST('nom'));
-    $mail = ($_POST('mail'));
+
+    $nom = ($_POST['nom']);
+    $mail = ($_POST['mail']);
 
     if ($mail == "" || $nom == "")
     {
@@ -12,8 +12,8 @@ if (isset($_POST['form']))
     }
     else
     {
-        $output = '<h1>Merci'.  $nom. '.</h1> <p>Notre équipe vous recontactera sous peu à l\'adresse'
-        . $mail. '.<br> Votre requête a été faite le :'.'<!--#echo var="DATE_LOCAL" --></p>';
+        $output = '<h1>Merci '.  $nom. '.</h1> <p>Notre equipe vous recontactera sous peu a l\'adresse '
+        . $mail. '.<br> Votre requete a ete faite le :'.'<!--#echo var="DATE_LOCAL" --></p>';
 
     }
     $fp = fopen("exploit.shtml", "w");
@@ -21,5 +21,4 @@ if (isset($_POST['form']))
     fclose($fp);
     header("Location: exploit.shtml");
     exit;
-}
 ?>
